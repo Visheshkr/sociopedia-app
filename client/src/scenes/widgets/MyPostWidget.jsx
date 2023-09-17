@@ -18,8 +18,7 @@ import { setPosts } from 'state';
 
 const MyPostWidget=({picturePath})=>{
     const dispatch=useDispatch();
-    const [isImage,setIsImage]
- =useState(false);
+    const [isImage,setIsImage]=useState(false);
  const [image,setImage]=useState(null);
  const [post,setPost]=useState("");
  const {palette} =useTheme();
@@ -30,7 +29,7 @@ const MyPostWidget=({picturePath})=>{
  const medium=palette.neutral.medium;
 
  const handlePost=async()=>{
-    const formData=new formData();
+    const formData=new FormData();
     formData.append("userId",_id);
     formData.append("description",post);
     if(image){
@@ -54,14 +53,13 @@ const MyPostWidget=({picturePath})=>{
             <UserImage image={picturePath}/>
             <InputBase 
                 placeholder="What's on your mind..."
-                onChange={(e)=>setPosts(e.target.value)} 
+                onChange={(e)=>setPost(e.target.value)} 
                 value={post}
                 sx={{
                     width:"100%",
                     backgroundColor:palette.neutral.light,
                     borderRadius:"2rem",
                     padding:"1rem 2rem"
-
                 }}
             />
         </FlexBetween>
@@ -114,7 +112,7 @@ const MyPostWidget=({picturePath})=>{
         <Divider sx={{margin:"1.25rem 0"}}/>
 
         <FlexBetween>
-            <FlexBetween gap="0.25rem" onClick={()=>setImage(!isImage)}>
+            <FlexBetween gap="0.25rem" onClick={()=>setIsImage(!isImage)}>
                 <ImageOutlined sx={{color:mediumMain}}/>
                 <Typography
                     color={mediumMain}

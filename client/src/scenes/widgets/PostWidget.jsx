@@ -55,11 +55,11 @@ const PostWidget=({
             </Typography>
             {picturePath && (
                 <img
-                    widht="100%"
+                    width="100%"
                     height="auto"
                     alt="post"
                     style={{borderRadius:"0.75rem",marginTop:"0.75rem"}}
-                    src={`http//localhost:3001/assets/${picturePath}`}
+                    src={`http://localhost:3001/assets/${picturePath}`}
                 />
             )}
             <FlexBetween mt="0.25rem">
@@ -81,7 +81,6 @@ const PostWidget=({
                         </IconButton>
                         <Typography>{comments.length}</Typography>
                     </FlexBetween>
-
                 </FlexBetween>
 
                 <IconButton>
@@ -92,14 +91,14 @@ const PostWidget=({
                 <Box
                     mt="0.5rem"
                 >
-                    {comments.map((comment,i)=>{
+                    {comments.map((comment,i)=>(
                         <Box key={`${name}-${i}`}>
                             <Divider/>
                             <Typography sx={{color:main,m:"0.5rem 0",pl:"1rem"}}>
                                 {comment}
                             </Typography>
                         </Box>
-                    })}
+                    ))}
                     <Divider/>
                 </Box>
             )}

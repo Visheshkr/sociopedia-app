@@ -4,14 +4,13 @@ import {
     LocationOnOutlined,
     WorkOutlineOutlined,
 } from "@mui/icons-material";
-import {Box,Typography,Divider,userTheme} from '@mui/material';
+import {Box,Typography,Divider,useTheme} from '@mui/material';
 import UserImage from 'components/UserImage';
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useSelector } from "react-redux";
 import { useEffect ,useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { useTheme } from "@emotion/react";
 
 const UserWidget=({userId,picturePath})=>{
     const[user,setUser]=useState(null);
@@ -30,7 +29,7 @@ const UserWidget=({userId,picturePath})=>{
         });
         const data=await response.json();
         setUser(data);
-;    };
+    };
 useEffect(()=>{
     getUser();//calling to fetch user when entered the page first time
 },[])//eslint-disable-line react-hooks/exhaustive-deps
@@ -44,7 +43,7 @@ const {
     location,
     occupation,
     viewedProfile,
-    impression,
+    impressions,
     friends,
 }=user;
 
@@ -99,7 +98,7 @@ return (
                 </FlexBetween>
                 <FlexBetween mb="0.5rem">
                     <Typography color={medium}>Impressions of your post</Typography>
-                    <Typography color={main} fontWeight="500">{impression}</Typography>
+                    <Typography color={main} fontWeight="500">{impressions}</Typography>
                 </FlexBetween>
             </Box>
             <Divider/>
